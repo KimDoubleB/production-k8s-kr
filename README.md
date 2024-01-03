@@ -23,6 +23,7 @@
 
 ## 방식
 
+- Branch 생성
 - 해당 Chapter를 읽고 파일(md, pdf 등)로 정리
 - Chapter에 맞는 directory 내 자신의 Github id로 파일을 추가
 - PR 작성
