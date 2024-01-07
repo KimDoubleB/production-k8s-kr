@@ -62,7 +62,7 @@
   - **running**: container process가 시작돼 실행 중
   - **stopped**: container process가 완료됨
 
-![image-20240107003448966](./assets/image-20240107003448966.png)
+![image-20240107003448966](../assets/image-20240107003448966.png)
 
 #### runc
 
@@ -163,7 +163,7 @@ container runtime을 고르는데 고려해야 할 점들
 - docker engine은 CRI를 구현하지 않았기 때문에 필요하다.
 - kubelet process에 위치함
 
-![image-20240107154742101](./assets/image-20240107154742101.png)
+![image-20240107154742101](../assets/image-20240107154742101.png)
 
 - 위 그림에서 결국 containerd가 container를 실행하게 되는 것을 알 수 있다.
 
@@ -205,7 +205,7 @@ container runtime을 고르는데 고려해야 할 점들
 - containerd CRI 구현체이며 containerd runtime에 포함되어 있다.
 - gRPC API를 `/run/containerd/containerd.sock` 의 unix socket으로 노출시킨다.
 
-![image-20240107163145841](./assets/image-20240107163145841.png)
+![image-20240107163145841](../assets/image-20240107163145841.png)
 
 - inspecting containers
   - **ctr**: containerd namespaec `k8s.io`에 위치함
@@ -223,7 +223,7 @@ container runtime을 고르는데 고려해야 할 점들
 
 - kubelet과 직접적으로 상호작용한다. (`/var/run/crio/crio.sock`)
 
-![image-20240107164929425](./assets/image-20240107164929425.png)
+![image-20240107164929425](../assets/image-20240107164929425.png)
 
 - container 생성 시 `conmon` (container monitor) process를 생성한다.
 
@@ -256,7 +256,7 @@ container runtime을 고르는데 고려해야 할 점들
 
 - CRI 구현체가 없기 때문에 별도 container runtime을 사용한다.
 
-  ![image-20240107170402083](./assets/image-20240107170402083.png)
+  ![image-20240107170402083](../assets/image-20240107170402083.png)
 
 - linux container pods와 VM-based pods를 같은 node에서 실행할 수 있다.
 
@@ -288,7 +288,7 @@ container runtime을 고르는데 고려해야 할 점들
 
 - 확장성 있는 구조를 갖춰, serverless frameworks, edge frameworks 등의 app들을 실행할 수 있다.
 
-  ![image-20240107181758006](./assets/image-20240107181758006.png)
+  ![image-20240107181758006](../assets/image-20240107181758006.png)
 
 
 

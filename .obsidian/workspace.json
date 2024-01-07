@@ -11,12 +11,8 @@
             "id": "2e1840a6c8002167",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "3장/KimDoubleB/Chapter-03. Container Runtime.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -86,7 +82,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "3장/KimDoubleB/Chapter-03. Container Runtime.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +98,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "3장/KimDoubleB/Chapter-03. Container Runtime.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,9 +119,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "3장/KimDoubleB/Chapter-03. Container Runtime.md"
-              }
+              "state": {}
             }
           }
         ],
@@ -149,18 +141,27 @@
   },
   "active": "2e1840a6c8002167",
   "lastOpenFiles": [
-    "assets/Pasted image 20240107032628.png",
-    "assets/Pasted image 20240107032718.png",
-    "assets/Pasted image 20240107031645.png",
-    "assets/Pasted image 20240107025228.png",
-    "assets/Pasted image 20240107021836.png",
-    "3장/KimDoubleB/Chapter-03. Container Runtime.md",
-    "assets/Pasted image 20240107183711.png",
-    "assets/Pasted image 20240107182237.png",
-    "assets/Pasted image 20240107202128.png",
-    "assets/Pasted image 20240107181555.png",
-    "assets/Pasted image 20240107174735.png",
+    "assets/image-20240107181758006.png",
+    "assets/image-20240107170402083.png",
+    "assets/image-20240107164929425.png",
+    "assets/image-20240107163145841.png",
+    "assets/image-20240107154742101.png",
+    "assets/image-20240107003448966.png",
+    "assets/9.png",
+    "assets/8.png",
+    "assets/7.png",
+    "assets/6.png",
+    "assets/5.png",
     "assets",
+    "3장/nailerHeum_3_container_runtime.md",
+    "3장/kworkbee_Chapter3.md",
+    "3장/KimDoubleB_03_Container Runtime.md",
+    "3장/3_container_runtime.md",
+    "3장/assets",
+    "3장/Chapter3.md",
+    "3장/images",
+    "3장/KimDoubleB/Chapter-03. Container Runtime.md",
+    "3장/Chapter-03. Container Runtime.md",
     "README.md",
     "2장",
     "1장",
@@ -169,8 +170,6 @@
     "16장",
     "15장",
     "14장",
-    "13장",
-    "12장",
     "test.md"
   ]
 }
