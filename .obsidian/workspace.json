@@ -11,24 +11,15 @@
             "id": "2e1840a6c8002167",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
-            }
-          },
-          {
-            "id": "efc73b91a39180f4",
-            "type": "leaf",
-            "state": {
               "type": "markdown",
               "state": {
-                "file": "README.md",
+                "file": "3장/KimDoubleB/Chapter-03. Container Runtime.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -78,7 +69,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "b9ec9671ef6c5fea",
@@ -94,8 +86,8 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "README.md",
-                "collapseAll": false,
+                "file": "3장/KimDoubleB/Chapter-03. Container Runtime.md",
+                "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
                 "showSearch": false,
@@ -111,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "README.md",
+                "file": "3장/KimDoubleB/Chapter-03. Container Runtime.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -134,29 +126,42 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "README.md"
+                "file": "3장/KimDoubleB/Chapter-03. Container Runtime.md"
               }
             }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 232.5
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:퀵 스위처 열기": false,
-      "graph:그래프 뷰 열기": false,
-      "canvas:새 캔버스 만들기": false,
-      "daily-notes:오늘의 데일리 노트 열기": false,
-      "templates:템플릿 삽입": false,
-      "command-palette:명령어 팔레트 열기": false
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
     }
   },
-  "active": "efc73b91a39180f4",
+  "active": "2e1840a6c8002167",
   "lastOpenFiles": [
+    "assets/Pasted image 20240107032628.png",
+    "assets/Pasted image 20240107032718.png",
+    "assets/Pasted image 20240107031645.png",
+    "assets/Pasted image 20240107025228.png",
+    "assets/Pasted image 20240107021836.png",
+    "3장/KimDoubleB/Chapter-03. Container Runtime.md",
+    "assets/Pasted image 20240107183711.png",
+    "assets/Pasted image 20240107182237.png",
+    "assets/Pasted image 20240107202128.png",
+    "assets/Pasted image 20240107181555.png",
+    "assets/Pasted image 20240107174735.png",
+    "assets",
+    "README.md",
     "2장",
     "1장",
     "18장",
@@ -166,8 +171,6 @@
     "14장",
     "13장",
     "12장",
-    "10장",
-    "9장",
     "test.md"
   ]
 }
