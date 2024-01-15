@@ -4,7 +4,7 @@
     "type": "split",
     "children": [
       {
-        "id": "9dbffb25ce96a4d0",
+        "id": "18dcffca6a8299d4",
         "type": "tabs",
         "children": [
           {
@@ -82,7 +82,12 @@
             "state": {
               "type": "backlink",
               "state": {
+<<<<<<< HEAD
                 "collapseAll": true,
+=======
+                "file": "4장/KimDoubleB.md",
+                "collapseAll": false,
+>>>>>>> 0240746 (docs: added 4 storage)
                 "extraContext": false,
                 "sortOrder": "alphabetical",
                 "showSearch": false,
@@ -98,6 +103,10 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+<<<<<<< HEAD
+=======
+                "file": "4장/KimDoubleB.md",
+>>>>>>> 0240746 (docs: added 4 storage)
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -119,7 +128,13 @@
             "type": "leaf",
             "state": {
               "type": "outline",
+<<<<<<< HEAD
               "state": {}
+=======
+              "state": {
+                "file": "4장/KimDoubleB.md"
+              }
+>>>>>>> 0240746 (docs: added 4 storage)
             }
           }
         ],
@@ -139,6 +154,7 @@
       "command-palette:Open command palette": false
     }
   },
+<<<<<<< HEAD
   "active": "2e1840a6c8002167",
   "lastOpenFiles": [
     "Lab",
@@ -176,6 +192,23 @@
     "3장/KimDoubleB/Chapter-03. Container Runtime.md",
     "3장/Chapter-03. Container Runtime.md",
     "README.md",
+=======
+  "active": "1a36916feba30fff",
+  "lastOpenFiles": [
+    "Pasted image 20240113162628.png.md",
+    "4장/KimDoubleB.md",
+    "README.md",
+    "2장",
+    "1장",
+    "18장",
+    "17장",
+    "16장",
+    "15장",
+    "14장",
+    "13장",
+    "12장",
+    "10장",
+>>>>>>> 0240746 (docs: added 4 storage)
     "test.md"
   ]
 }
