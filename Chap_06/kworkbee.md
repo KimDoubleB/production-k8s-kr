@@ -391,3 +391,210 @@ Kubernetes는 서비스 디스커버리를 쉽게 하기 위해 환경변수를 
 #### DNS 서버 오토스케일링
 
 클러스터 크기에 따라 DNS 배포를 자동 확장할 수 있다. HPA를 사용하지 않고 클러스터 노드 수를 기반으로 워크로드를 확장하는 클러스터 비례 오토스케일러를 사용하는 것이다. 기본적으로 10초 Interval로 kube-apiserver를 Polling 하여 클러스터의 노드 및 CPU 코어 수를 가져와서 이를 바탕으로 Replicas를 조정한다.
+
+---
+
+## Service Mesh
+
+애플리케이션 서비스 간 모든 통신을 처리하는 소프트웨어 계층. 애플리케이션 트래픽을 관리/추적하고 보안성을 강화하기 위해 플랫폼 레이어에 구성되는 네트워크 제어 방법을 의미한다. 대표적으로 아래와 같은 기능이 추가된다.
+
+### Routing과 안정성
+
+- 트래픽 이동 / 미러링, 재시도, Circuit Breaking과 같은 고급 트래픽 라우팅 및 안정성 기능
+
+### 보안
+
+- ID, 인증서 관리 및 mTLS를 포함해 서비스 간의 보안 통신을 가능하게 하는 ID 및 액세스 제어 기능
+
+### Observability
+
+- 서비스 메시에서 발생하는 모든 상호작용하는 메트릭 및 Trace를 자동 수집
+
+### Service Mesh 사용 사례
+
+### [SMI (Service Mesh Interface)](https://smi-spec.io/)
+
+SMI는 Kubernetes와 Service Mesh간 인터랙션을 지정한다. 다만 Kubernetes 프로젝트의 일부가 아니며, Service Mesh 제공자가 SMI를 지원하는지 확인해야 한다.
+SMI를 지원하는 프로젝트는 CRD를 활용해 인터페이스를 지정한다.
+
+> 23년 10월에 CNCF에서 프로젝트를 Archive하는 것으로 결정하였다. 대신 Kubernetes SIG의 [Gateway API](https://gateway-api.sigs.k8s.io/) 프로젝트가 SMI를 대체할 것으로 예상된다.
+
+#### Kubernetes Gateway API
+
+![Kubernetes Gateway API](../assets/34.png)
+
+Kubernetes SIG에서 관리 중인 프로젝트로써, Ingress 리소스를 대체하는 새로운 리소스 모델을 제공한다. 이를 통해 Ingress 리소스의 한계를 극복하고, Ingress 리소스의 확장성과 유연성을 향상시킨다.
+
+> 한계
+>
+> - 기능 부족
+> - 확장성 부족
+> - 다양한 사용자 역할 부족
+
+다음과 같은 기본 리소스를 제공한다.
+
+- `GatewayClass` - 아직 Provisioning되지 않은 Data Plane에 대한 템플릿을 정의한다.
+- `Gateway` - 템플릿 (`GatewayClass`)에 따라 Data Plane을 프로비저닝하고 외부 트래픽을 받아들이기 위한 진입점 (Port)을 구성한다.
+- `HTTPRoute` - 클러스터의 Service에 대한 외부 트래픽의 HTTP 요청 라우팅 규칙을 구성하고 이러한 규칙을 `Gateway`에 정의된 entrypoint에 연결한다.
+
+23년도 하반기에 1.0 GA 되었으며, 이를 구현하는 [대부분의 구현](https://gateway-api.sigs.k8s.io/implementations/)들은 여전히 Alpha 혹은 Beta 상태이다.
+
+### Data Plane Proxy
+
+Service Mesh의 핵심 구성 요소로써, 애플리케이션 서비스 간의 모든 트래픽을 관리한다. 대표적으로 Envoy, Linkerd, Istio 등이 있다.
+
+#### Envoy
+
+Lyft에서 개발한 오픈소스 프록시 서버로써, Service Mesh의 Data Plane Proxy로 사용된다. 다양한 기능을 제공하며, 이를 통해 Service Mesh의 기능을 활용할 수 있다. Envoy는 Ingress Controller (Contour), API Gateway (Ambassador, Gloo), Service Mesh (Istio, Open Service Mesh) 등에서도 사용된다.
+이전의 오픈소스 프록시와는 다르게 xDS (gRPC 기반) API를 통해 동적으로 설정을 변경할 수 있고, Hot Reloading을 지원한다.
+xDS는 API 모음으로 다음과 같이 4가지 종류가 있다. (CDS, EDS, LDS, RDS) 각각 Cluster, Endpoint, Listener, Route 설정을 담당한다.
+Envoy Configuration 서버는 API를 구현하고 Envoy의 동적 구성 소스로 작동한다. 시작하는 동안 Envoy는 구성 서버에 연결하고 구성 변경사항을 Subscribe한다. 환경이 변경되면 구성 서버가 변경사항을 Envoy로 스트리밍한다.
+
+LDS API를 통해 Listener를 구성한다. Listener는 프록시에 대한 진입점으로, 클라이언트가 연결할 수 있는 여러 Listener를 열 수 있다. 일반적으로 HTTP / HTTPS 트래픽을 80/443 포트에서 수신 대기한다. 각 Listener는 들어오는 트래픽을 처리하는 방법을 결정하는 일련의 Filter Chain을 가진다.
+HTTP 연결 관리자 필터는 RDS API를 활용해 Routing 구성을 가져온다. Routing 구성은 Envoy에 들어오는 HTTP 요청을 Routing하는 방법을 알려준다. Virtual Host 및 요청 일치 (경로 혹은 헤더 기반 등)에 대한 세부 정보를 제공한다.
+Routing 구성의 각 경로는 Cluster를 참조한다. Cluster는 동일한 서비스에 속하는 엔드포인트 모음이다. Envoy는 각각 CDS / EDS API를 사용해 Cluster / Endpoint를 검색한다.
+
+![Envoy xDS](../assets/31.png)
+![Envoy xDS](../assets/32.png)
+
+### Kubernetes Service Mesh
+
+Kubernetes에서 Service Mesh를 구축하려면 클러스터 내부에서 발생하는 상황에 따라 Service Mesh의 Data Plane을 구성하는 Control Plane이 필요하다. 대표적으로 Istio, Linkerd, Consul 등이 있다. Istio의 경우 Envoy 기반 Service Mesh에 대한 Control Plane을 구성한다. 자체적으로 세 가지 기본 하위 구성요소 (Pilot, Citadel, Galley)가 있는 `istiod` 컴포넌트에서 구현된다.
+
+![Istiod](../assets/33.png)
+
+- Pilot
+  - Envoy 구성 서버로 xDS API를 구현하고 애플리케이션과 함께 실행되는 Envoy 프록시로 구성을 스트리밍한다.
+- Citadel
+ - Service Mesh 내부의 인증서 관리를 담당한다.
+ - 서비스 ID 및 mTLS 설정에 필요한 인증서를 발행한다.
+- Galley
+  - Kubernetes와 같은 외부 시스템과의 상호작용을 통해 설정을 얻는다. 기본 플랫폼을 추상화하고 다른 istiod 컴포넌트에 대한 구성을 변환한다.
+
+Istio는 Service Mesh의 Data Plane을 구성하는 것 이외에 Envoy 사이드카를 Pod에 주입하는 Mutating Admission Webhook을 포함한다. 이를 통해 개발자가 별도 조치 없이 Deployment 배포 시점에 자동으로 Envoy 사이드카가 주입되어 DevEx가 향상된다.
+
+```yaml
+...
+initContainers:
+- args:
+  - istio-iptables
+  - --envoy-port
+  - "15001"
+  - --inbound-capture-port
+  - "15006"
+  - --proxy-uid
+  - "1337"
+  - --istio-inbound-interception-mode
+  - REDIRECT
+  - --istio-service-cidr
+  - "*"
+  - --istio-inbound-ports
+  - "*"
+  - --istio-local-exclude-ports
+  - 15090,15021,15020
+  image: docker.io/istio/proxyv2:1.11.0
+  imagePullPolicy: Always
+  name: istio-init
+```
+
+```yaml
+apiVersion: security.istio.io/v1beta1
+kind: PeerAuthentication
+metadata:
+  name: default
+  namespace: istio-system
+spec:
+  mtls:
+    mode: STRICT
+```
+
+```yaml
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: my-destination-rule
+  namespace: default
+spec:
+  host: flights
+  subsets:
+  - labels:
+      version: v1
+    name: v1
+  - labels:
+      version: v2
+    name: v2
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: my-virtual-service
+  namespace: default
+spec:
+  hosts:
+  - flights
+  http:
+  - route:
+    - destination:
+        host: flights
+        subset: v1
+      weight: 90
+    - destination:
+        host: flights
+        subset: v2
+      weight: 10
+```
+
+---
+
+### Data Plane 아키텍처
+
+#### Sidecar Proxy
+
+가장 일반적인 아키텍처 모델로 Istio의 경우 Sidecar Proxy로 Envoy를 채택하여 Data Plane을 구현한다. (Linkerd 또한 이 방식을 사용한다.) 이 때 Sidecar Proxy 패턴을 따르는 Service Mesh에서는 함께 실행되는 워크로드 Pod 내부에 Proxy가 배포된다. 이렇게 되면 서비스 안팎의 모든 통신을 Proxy가 Intercept한다.
+
+Sidecar Proxy 패턴은 Pod를 재생성하지 않고는 사이드카 업그레이드할 수 있는 방법이 없으므로 업그레이드에는 모든 Service Pod를 Rolling하는 작업이 포함된다.
+
+#### Node Proxy
+
+대체 Data Plane 아키텍처로 각 서비스에 Sidecar Proxy를 주입하는 대신 각 노드에 단일 Proxy를 구성하고 해당 노드에서 실행되는 모든 서비스의 트래픽을 처리한다. 이러한 아키텍처를 따르는 Service Mesh로 Consul Connect, Maesh 등이 포함된다. (과거 Linkerd도 이 방식을 사용했으나 지금은 Sidecar Proxy 패턴으로 전환되었다.)
+Sidecar Proxy 아키텍처와 비교해봤을 때 이 방식은 서비스에 더 큰 성능 영향을 미칠 수 있다. Proxy가 노드 내 모든 서비스에서 공유되므로 서비스는 트래픽 부하가 많은 타 서비스로 인해 함께 영향을 받을 수 있다. (네트워크 병목 현상)
+
+---
+
+### Service Mesh 채택
+
+#### 우선순위 지정
+
+#### 신규/기존 클러스터 배포 선택
+
+플랫폼 라이프사이클 및 토폴로지에 따라 Service Mesh를 새 클러스터에 배포하거나 기존 클러스터에 추가하는 것 중에서 선택할 수 있다. 가능하면 새 클러스터 경로를 사용하는 것이 좋다. 기존 클러스터에서 실행되고 있는 애플리케이션에 대한 잠재적 중단 문제가 발생할 수 있기 때문이다.
+만약, 기존 클러스터에 Service Mesh를 추가해야 한다면 개발 및 Test Tier에서 광범위한 테스트를 충분히 수행해야 한다.
+특히 Istio를 사용한다면 사이드카 삽입 여부를 결정할 수 있는 annotation을 사용할 수 있어, 이를 통해 워크로드에 사이드카 삽입 여부를 검토할 수 있다.
+
+```yaml
+apiVersion: v1
+kind: Deployment
+metadata:
+  name: my-app
+  annotations:
+    sidecar.istio.io/inject: "true"
+spec:
+  ...
+```
+
+#### 업그레이드 처리
+
+Service Mesh를 사용하는데 있어 명확한 업그레이드 전략이 수립되어야 한다. Service Mesh Data Plane은 Cluster의 Edge를 포함해 서비스를 연결하는 중요한 경로 상에 위치하고 있기 때문에 업그레이드 시에는 트래픽의 중단을 최소화해야 한다.
+또한 업그레이드에 있어 Control Plane과 Data Plane을 모두 고려해야 하고, 서로 간의 버전 호환성 또한 확인이 필요하다. Canary, Blue/Green 배포 등을 통해 업그레이드를 수행할 수 있다.
+
+#### 리소스 오버헤드
+
+Pod에 삽입되는 Proxy Sidecar Container는 리소스 (CPU / Memory)를 사용하기 때문에 엄격한 리소스 제약이 있는 환경에서 트레이드오프가 가능한지 여부를 고려해야 한다. 대체로 Proxy Sidecar는 고성능이지만 성능 테스트를 통해 확인이 필요한 사항이다.
+
+#### mTLS CA
+
+Service Mesh의 ID 기능은 일반적으로 X.509 인증서를 기반으로 하고 이 인증서를 사용해 서비스 간 mTLS 연결을 설정한다. 이 기능을 활용하려면 인증서 관리 전략이 수립되어야 한다. CA (Certificate Authority)를 사용해 인증서를 발급하고 관리하는 것이 일반적이다. CA를 결정하는 것은 사용자 몫이며 대부분의 Service Mesh는 Self-signed Certificate를 CA로 사용한다. Service Mesh는 서비스 간 통신을 처리하므로 자체 서명된 CA를 사용하는 것이 적절하다. mTLS에 자체 서명된 CA를 사용할 수 없으면 Service Mesh가 인증서를 발행하는 데 사용할 수 있는 CA 인증서와 키를 제공해야 한다.
+
+#### Multi-cluster Service Mesh
+
+애플리케이션에 투명하게 적용 가능한 보안 채널로 서로 다른 클러스터에서 실행되는 서비스를 연결하는 것이 목표. Multi-cluster Service Mesh는 플랫폼 복잡성을 증가시킨ㅇ다. 개발자가 알고 있어야 하는 성능 및 결함 도메인 영향을 모두 가질 수 있다. 이러한 이유 등으로 인해 단일 클러스터 Service Mesh를 성공적으로 실행하기 위한 운영 경험이 충분히 쌓일 때까지는 적용을 지양하는 것이 좋다.
