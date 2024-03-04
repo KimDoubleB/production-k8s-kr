@@ -12,17 +12,19 @@
 |2024.01.28| Lab Time 🧑🏻‍🔬 |nailerHeum/s3, kworkbee/MinIO, [KimDoubleB/Cilium](https://github.com/KimDoubleB/production-k8s-kr/blob/main/Practices/KimDoubleB-Cilium.md)|-|
 |2024.02.04|7장 - 시크릿 관리|[nailerHeum](https://github.com/KimDoubleB/production-k8s-kr/blob/main/Chap_07/nailerHeum.md), [kworkbee](https://github.com/KimDoubleB/production-k8s-kr/blob/main/Chap_07/kworkbee.md), [KimDoubleB](https://github.com/KimDoubleB/production-k8s-kr/blob/main/Chap_07/KimDoubleB.md)|-|
 |2024.02.11| 설날 방학 🏝️ |-|-|
-|2024.02.18|6장 - 서비스 라우팅 1|nailerHeum, kworkbee, KimDoubleB|-|
-|2024.02.25|6장 - 서비스 라우팅 2|nailerHeum, kworkbee, KimDoubleB|-|
-|2024.XX.XX|8장 - 어드미션 컨트롤|-|-|
-|2024.XX.XX|9장 - 관찰 가능성|-|-|
-|2024.XX.XX|10장 - 식별|-|-|
-|2024.XX.XX|11장 - 플랫폼 서비스 구축|-|-|
-|2024.XX.XX|12장 - 멀티테넌시|-|-|
-|2024.XX.XX|13장 - 오토스케일링|-|-|
-|2024.XX.XX|14장 - 애플리케이션 고려사항|-|-|
-|2024.XX.XX|15장 - CI/CD 파이프라인|-|-|
-|2024.XX.XX|16장 - 플랫폼 추상화|-|-|
+|2024.02.18|6장 - 서비스 라우팅 1|[kworkbee](https://github.com/KimDoubleB/production-k8s-kr/blob/main/Chap_06/kworkbee.md), [KimDoubleB](https://github.com/KimDoubleB/production-k8s-kr/blob/main/Chap_06/KimDoubleB-1.md)|-|
+|2024.03.03|6장 - 서비스 라우팅 2|[kworkbee](https://github.com/KimDoubleB/production-k8s-kr/blob/main/Chap_06/kworkbee.md), [KimDoubleB](https://github.com/KimDoubleB/production-k8s-kr/blob/main/Chap_06/KimDoubleB-2.md)|-|
+|2024.03.03| Lab Time 🧑🏻‍🔬 |[kworkbee/SchemaHero](https://github.com/KimDoubleB/production-k8s-kr/blob/main/Practices/kworkbee-SchemaHero.md), [KimDoubleB/Linkerd](https://github.com/KimDoubleB/production-k8s-kr/blob/main/Practices/KimDoubleB-Linkerd.md)|-|
+|2024.03.10|8장/어드미션 컨트롤, 12장/멀티테넌시|-|-|
+|2024.03.24|9장/관찰 가능성|-|-|
+|2024.03.24|Lab Time 🧑🏻‍🔬|-|-|
+|2024.03.31|10장 - 식별|-|-|
+|2024.04.07|11장 - 플랫폼 서비스 구축|-|-|
+|2024.04.21|13장/오토스케일링, 14장/애플리케이션 고려사항|-|-|
+|2024.04.21|Lab Time 🧑🏻‍🔬|-|-|
+|2024.04.28|15장/CICD 파이프라인, 16장/플랫폼 추상화|-|-|
+
+<br/>
 
 ## 방식
 
