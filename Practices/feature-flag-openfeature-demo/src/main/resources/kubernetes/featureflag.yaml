@@ -1,0 +1,14 @@
+apiVersion: core.openfeature.dev/v1beta1
+kind: FeatureFlag
+metadata:
+  name: todo-flag
+  namespace: openfeature
+spec:
+  flagSpec:
+    flags:
+      FLAG_CREATE_TODO:
+        state: "ENABLED"
+        variants:
+          on: true
+          off: false
+        defaultVariant: on
