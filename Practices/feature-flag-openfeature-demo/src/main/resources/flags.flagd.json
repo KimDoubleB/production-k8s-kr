@@ -1,0 +1,12 @@
+{
+  "flags": {
+    "FLAG_CREATE_TODO": {
+      "variants": {
+        "on": true,
+        "off": false
+      },
+      "state": "ENABLED",
+      "defaultVariant": "on"
+    }
+  }
+}

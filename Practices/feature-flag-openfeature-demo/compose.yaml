@@ -1,0 +1,23 @@
+version: "3.9"
+name: "feature-flag-openfeature-demo"
+services:
+  mysql:
+    image: 'mysql:latest'
+    environment:
+      MYSQL_DATABASE: feature-flag
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+      TZ: Asia/Seoul
+    ports:
+      - '3306:3306'
+    volumes:
+      - ./src/main/resources/db/mysql/conf.d:/etc/mysql/conf.d
+      - ./src/main/resources/db/mysql/init:/docker-entrypoint-initdb.d
+  flagd:
+    image: ghcr.io/open-feature/flagd:latest
+    ports:
+      - "8013:8013"
+    volumes:
+      - "./src/main/resources/:/etc/flagd/"
+    command: "start --uri file:/etc/flagd/flags.flagd.json"

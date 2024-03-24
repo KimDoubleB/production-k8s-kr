@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todo
+  namespace: todo
+  annotations:
+    openfeature.dev/enabled: "true"
+    openfeature.dev/flagsourceconfiguration: "openfeature/feature-flag-sources"
+spec:
+  selector:
+    matchLabels:
+      app: todo
+  template:
+    metadata:
+      labels:
+        app: todo
+    spec:
+      containers:
+      - name: todo
+        image: docker.io/g1tommy/feature-flag-demo:latest
+        ports:
+        - containerPort: 8080

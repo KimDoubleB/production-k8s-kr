@@ -1,0 +1,34 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: feature-flag-openfeature-demo
+
+  docker:
+    compose:
+      stop:
+        command: down
+
+  jpa:
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+        ddl-auto: create
+    database-platform: org.hibernate.dialect.MySQLDialect
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/feature-flag?serverTimezone=Asia/Seoul
+    username: user
+    password: password
+
+feature-flag:
+  host: localhost
+  port: 8013
+  tls: false
+
+logging:
+  level:
+    com.example.demo.aop.FeatureFlagAspect: DEBUG
