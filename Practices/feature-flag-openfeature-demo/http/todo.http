@@ -1,0 +1,26 @@
+### Create Todo
+POST {{baseUrl}}/api/v1/todo
+Content-Type: application/json
+
+{
+  "content": "OpenFeature 살펴보기",
+  "completed": false
+}
+
+### Todo List
+GET {{baseUrl}}/api/v1/todo
+
+### Get Todo
+GET {{baseUrl}}/api/v1/todo/1
+
+### Update Todo
+PUT {{baseUrl}}/api/v1/todo/1
+Content-Type: application/json
+
+{
+  "content": "OpenFeature 맛보기",
+  "completed": true
+}
+
+### Delete Todo
+DELETE {{baseUrl}}/api/v1/todo/1
