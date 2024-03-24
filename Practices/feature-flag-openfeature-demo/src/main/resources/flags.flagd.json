@@ -6,7 +6,7 @@
         "off": false
       },
       "state": "ENABLED",
-      "defaultVariant": "off"
+      "defaultVariant": "on"
     }
   }
 }

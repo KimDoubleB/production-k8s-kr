@@ -31,3 +31,5 @@ Cloud-Native에서 사용할 수 있는, Vendor-agnostic하면서도 Community-D
 ### In Cloud-Native Environment
 
 [OpenFeature Operator](https://github.com/open-feature/open-feature-operator)를 사용하면 `flagd`를 별도의 `Deployment`로 구성하지 않아도 Operator에 의해 각 애플리케이션 사이드카 컨테이너로 주입되게 구현할 수 있습니다. 또한 플래그 정보는 별도 Custom Resource 오브젝트로 관리가 가능합니다.
+
+![OpenFeature Operator Architecture](https://github.com/open-feature/open-feature-operator/raw/main/images/arch-0.png)

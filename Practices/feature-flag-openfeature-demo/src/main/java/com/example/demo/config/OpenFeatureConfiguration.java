@@ -1,5 +1,6 @@
 package com.example.demo.config;
 
+import com.example.demo.aop.FeatureFlagAspect;
 import dev.openfeature.contrib.providers.flagd.FlagdOptions;
 import dev.openfeature.contrib.providers.flagd.FlagdProvider;
 import dev.openfeature.sdk.Client;
@@ -20,6 +21,10 @@ public class OpenFeatureConfiguration {
 		instance.setProvider(pluggableFlagdProvider(properties));
 
 		return instance.getClient();
+	}
+	@Bean
+	public FeatureFlagAspect featureFlagAspect(Client openFeatureClient) {
+		return new FeatureFlagAspect(openFeatureClient);
 	}
 
 	private FeatureProvider pluggableFlagdProvider(FlagdProperties properties) {
