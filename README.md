@@ -15,8 +15,8 @@
 |2024.02.18|6장 - 서비스 라우팅 1|[kworkbee](https://github.com/KimDoubleB/production-k8s-kr/blob/main/Chap_06/kworkbee.md), [KimDoubleB](https://github.com/KimDoubleB/production-k8s-kr/blob/main/Chap_06/KimDoubleB-1.md)|-|
 |2024.03.03|6장 - 서비스 라우팅 2|[kworkbee](https://github.com/KimDoubleB/production-k8s-kr/blob/main/Chap_06/kworkbee.md), [KimDoubleB](https://github.com/KimDoubleB/production-k8s-kr/blob/main/Chap_06/KimDoubleB-2.md)|-|
 |2024.03.03| Lab Time 🧑🏻‍🔬 |[kworkbee/SchemaHero](https://github.com/KimDoubleB/production-k8s-kr/blob/main/Practices/kworkbee-SchemaHero.md), [KimDoubleB/Linkerd](https://github.com/KimDoubleB/production-k8s-kr/blob/main/Practices/KimDoubleB-Linkerd.md)|-|
-|2024.03.10|8장 - 어드미션 컨트롤<br/>12장 - 멀티테넌시|[kworkbee](https://github.com/KimDoubleB/production-k8s-kr/blob/main/Chap_08/kworkbee.md)|-|
-|2024.03.24|9장 - 관찰 가능성|[KimDoubleB](https://github.com/KimDoubleB/production-k8s-kr/blob/main/Chap_09/KimDoubleB.md)|-|
+|2024.03.10|8장 - 어드미션 컨트롤<br/>12장 - 멀티테넌시|[nailerHeum](https://github.com/KimDoubleB/production-k8s-kr/blob/main/Chap_08/nailerHeum.md), [kworkbee](https://github.com/KimDoubleB/production-k8s-kr/blob/main/Chap_08/kworkbee.md)|-|
+|2024.03.24|9장 - 관찰 가능성|[KimDoubleB](https://github.com/KimDoubleB/production-k8s-kr/blob/main/Chap_09/KimDoubleB.md), [nailerHeum](https://github.com/KimDoubleB/production-k8s-kr/blob/main/Chap_09/nailerHeum.md)|-|
 |2024.03.24|Lab Time 🧑🏻‍🔬|[kworkbee/OpenFeature, FlagD](https://github.com/KimDoubleB/production-k8s-kr/tree/main/Practices/feature-flag-openfeature-demo)|함께 실습|
 |2024.03.31|10장 - 식별|-|-|
 |2024.04.07|11장 - 플랫폼 서비스 구축|-|-|
