@@ -18,11 +18,11 @@
 |2024.03.10|8장 - 어드미션 컨트롤<br/>12장 - 멀티테넌시|[nailerHeum](https://github.com/KimDoubleB/production-k8s-kr/blob/main/Chap_08/nailerHeum.md), [kworkbee](https://github.com/KimDoubleB/production-k8s-kr/blob/main/Chap_08/kworkbee.md)|-|
 |2024.03.24|9장 - 관찰 가능성|[KimDoubleB](https://github.com/KimDoubleB/production-k8s-kr/blob/main/Chap_09/KimDoubleB.md), [nailerHeum](https://github.com/KimDoubleB/production-k8s-kr/blob/main/Chap_09/nailerHeum.md)|-|
 |2024.03.24|Lab Time 🧑🏻‍🔬|[kworkbee/OpenFeature, FlagD](https://github.com/KimDoubleB/production-k8s-kr/tree/main/Practices/feature-flag-openfeature-demo)|함께 실습|
-|2024.03.31|10장 - 식별|-|-|
-|2024.04.07|11장 - 플랫폼 서비스 구축|-|-|
-|2024.04.21|13장 - 오토스케일링<br/>14장 - 애플리케이션 고려사항|-|-|
-|2024.04.21|Lab Time 🧑🏻‍🔬|-|-|
-|2024.04.28|15장 - CI/CD 파이프라인<br/>16장 - 플랫폼 추상화|-|-|
+|2024.03.31|10장 - 식별|[kworkbee](https://github.com/KimDoubleB/production-k8s-kr/blob/main/Chap_10/kworkbee.md), [KimDoubleB](https://github.com/KimDoubleB/production-k8s-kr/blob/main/Chap_10/KimDoubleB.md)|-|
+|2024.04.07|11장 - 플랫폼 서비스 구축|[kworkbee](https://github.com/KimDoubleB/production-k8s-kr/blob/main/Chap_11/kworkbee.md), [KimDoubleB](https://github.com/KimDoubleB/production-k8s-kr/blob/main/Chap_11/KimDoubleB.md)|-|
+|2024.04.21|13장 - 오토스케일링<br/>14장 - 애플리케이션 고려사항|kworkbee([13](https://github.com/KimDoubleB/production-k8s-kr/blob/main/Chap_13/kworkbee.md)/[14](https://github.com/KimDoubleB/production-k8s-kr/blob/main/Chap_14/kworkbee.md)), KimDoubleB([13](https://github.com/KimDoubleB/production-k8s-kr/blob/main/Chap_13/KimDoubleB.md)/[14](https://github.com/KimDoubleB/production-k8s-kr/blob/main/Chap_14/KimDoubleB.md))|-|
+|2024.04.28|15장 - CI/CD 파이프라인<br/>16장 - 플랫폼 추상화|kworkbee ([15](https://github.com/KimDoubleB/production-k8s-kr/blob/main/Chap_15/kworkbee.md)/[16](https://github.com/KimDoubleB/production-k8s-kr/blob/main/Chap_16/kworkbee.md)), KimDoubleB ([15](https://github.com/KimDoubleB/production-k8s-kr/blob/main/Chap_15/KimDoubleB.md))|-|
+|2024.04.28|Lab Time 🧑🏻‍🔬|[kworkbee/ETCD](https://github.com/KimDoubleB/production-k8s-kr/blob/main/Practices/kworkbee-ETCD.md), KimDoubleB/ArgoCD|-|
 
 <br/>
 
